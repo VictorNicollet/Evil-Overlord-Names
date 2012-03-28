@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <title>Evil Overlord Name Generator</title>
+</head>
+
+<body style="padding-top:70px">
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="">
+        The Evil Overlord Name Generator
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <p style="text-align: center">
+  Your Evil Overlord name is:
+  </p>
+  <p style="text-align: center; margin:50px; font-size:3em">
+  <strong id="name"></strong>
+  </p>
+  <p style="text-align: center">
+  <button class="btn btn-primary">Generate Another</button>
+  </p>
+  <p style="text-align:center">
+  <small>Made by <a href="http://nicollet.net">Victor Nicollet</a>, available on <a href="https://github.com/VictorNicollet/Evil-Overlord-Names">GitHub</a>.</small>
+  </p>
+</div>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="evil.js"></script>
+<script type="text/javascript">
+
+var start = Math.floor(Math.random() * evil.count);
+
+function gen() {
+  $('#name').text(evil.get(start++));
+}
+
+gen();
+
+$('button').click(gen);
+
+
+</script>
+
+</body> </html>
