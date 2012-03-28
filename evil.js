@@ -304,12 +304,21 @@ var evil = (function() {
 	"Destroyer",
 	"Eater",
 	"Devourer",
-	"Betrayer"
+	"Betrayer",
+	"Unmaker",
+	"Ender",
+	"Harbinger",
+	"Reaper",
+	"Demolisher",
+	"Anathema",
+	"Blasphemer",
+	"Defiler"
     ];
 
     var good = [
 	"Worlds",
 	"Men",
+	"Souls",
 	"Hearts",
 	"Innocence",
 	"Virgins",
@@ -323,7 +332,8 @@ var evil = (function() {
 	"Dreams",
 	"Life",
 	"Faith",
-	"Candy"
+	"Candy",
+	"Happiness"
     ];
 
     var syl1 = [
@@ -337,10 +347,9 @@ var evil = (function() {
 
     var root = [
 	[ address, ' ', ominous ],
-	[ address, ' ', ominous ],
 	[ "The ", ruler, " of ", ominous ],
 	[ "The ", killer, " of ", good ],
-	[ "The ", adjective, ", ", killer, ' of ', good ],
+	[ "The ", adjective, " ", person ],
 	[ "The ", adjective, " ", killer, ' of ', good ],
 	[ syl1, syl2, ' the ', adjective], 
 	[ syl1, syl2, ', ', killer, ' of ', good ],
