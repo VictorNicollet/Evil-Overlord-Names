@@ -23,15 +23,18 @@
   <p style="text-align: center">
   Your Evil Overlord name is:
   </p>
-  <p style="text-align: center; margin:50px; font-size:3em">
+  <p style="text-align: center; margin:50px; font-size:2em">
   <strong id="name"></strong>
   </p>
   <p style="text-align: center">
-  <button class="btn btn-primary">Generate Another</button>
+  <button class="btn btn-large btn-primary">Generate Another</button>
+  <a id="twitter" class="btn btn-large" target="_blank">Share on Twitter</a>
   </p>
   <p style="text-align:center">
   <small>Made by <a href="http://nicollet.net">Victor Nicollet</a>, available on <a href="https://github.com/VictorNicollet/Evil-Overlord-Names">GitHub</a>.</small>
   </p>
+
+  
 </div>
 
 
@@ -39,10 +42,12 @@
 <script type="text/javascript" src="evil.js"></script>
 <script type="text/javascript">
 
-var start = Math.floor(Math.random() * evil.count);
-
 function gen() {
-  $('#name').text(evil.get(start++));
+  var name = evil.get(Math.floor(Math.random() * evil.count));
+  $('#name').text(name);
+  $('#twitter').attr('href',
+    'https://twitter.com/intent/tweet?url='+encodeURIComponent(document.location)
+    +'&text='+encodeURIComponent('My #EvilOverlordName is '+name+'. '+document.location));
 }
 
 gen();

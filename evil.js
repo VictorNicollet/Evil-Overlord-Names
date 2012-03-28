@@ -49,8 +49,9 @@ var evil = (function() {
 	if (is_concat(tree)) {
 	    for (var i = 0; i < tree.length; ++i) {
 		var sub = count(tree[i]);
-		build(output,tree[i],n % sub);
-		n = (n - (n % sub)) / sub;
+		var n2  = n % sub;
+		build(output,tree[i], n2);
+		n = (n - n2) / sub;
 	    }
 	} else {
 	    for (var i = 0; i < tree.length; ++i) {
@@ -79,21 +80,28 @@ var evil = (function() {
 	"Bishop",
 	"Baron",
 	"Countess",
-	"Council",
-	"Facebook Profile",
-	"Secret Circle",
+	"Avatar",
 	"Bringer",
-	"Legion",
-	"Army",
 	"Ruler",
-	"Knights",
 	"Ghost",
 	"Spirit",
 	"Demigod",
 	"God",
-	"Blue Screen",
-	"Leading Providers",
-	"Tax Inspector"
+	"Archfiend",
+	"Dread Prince",
+	"Hell Prince",
+	"Master",
+	"Creator",
+	"Mother",
+	"Wielder"
+    ];
+
+    var rulers = [
+	"Legion",
+	"Army",
+	"Knights",
+	"Secret Circle",
+	"Leading Providers"
     ];
 
     var person = [
@@ -102,20 +110,19 @@ var evil = (function() {
 	"Lord",
 	"Bishop", 
 	"King",
-	"Clown",
-	"Force",
-	"Legion",
-	"Army",
 	"Gentleman",
 	"Lady",
 	"Devil",
+	"Prime Evil",
+	"Dread Lord",
+	"Deathlord",
+	"Overlord",
 	"Entity",
 	"Chthonian",
 	"Queen",
 	"Knight",
 	"Traitor",	 
 	"Sorcerer",
-	"Petroleum",
 	"Wizard",
 	"Witch",
 	"Sorceress",
@@ -128,30 +135,50 @@ var evil = (function() {
 	"Zombie",
 	"Elder God",
 	"One",
-	"Ones",
 	"Man",
-	"Media Conglomerate",
 	"Necromancer",
 	"Conjurer",
 	"Magician",
 	"Demon",
 	"Demonologist",
 	"Fiend",
-	"Gods",
 	"Woman",
 	"Wanderer",
-	"Corporation",
-	"Council",
 	"Stock Broker",
-	"Death Metal Lead Singer",
 	"Ruler",
 	"Consultant",
-	"Government",
-	"Monster Behind You",
-	"Powerpoint Presentation",
+	"Ghoul",
+	"Hellion",
+	"Hydra",
 	"Beast",
+	"Lich",
+	"Werewolf",
+	"Vampire",
+	"Mummy",
+	"Archnemesis",
+	"Archfiend",
+	"Champion",
+	"Muse",
+	"Evil Priest",
+	"Cultist",
+	"Assassin",
+	"Ninja",
+	"Ronin",
+	"Shogun",
+	"Prince",
+	"Annihilator",
+	"Space Marine",
+	"Monster Behind You",
 	"Fatal Error",
-	"Tentacle Monster"
+	"Tentacle Monster",
+	"Doctor",
+	"Scientist",
+	"Researcher",
+	"Gynaecologist",
+	"Proctologist",
+	"Mortician",
+	"Surgeon",
+	"Terrorist"
     ];
 
     var address = [
@@ -196,11 +223,16 @@ var evil = (function() {
 	"Undeath",
 	"Gloom",
 	"Blood",
-	"Viscera"
+	"Viscera",
+	"Entropy",
+	"Gore",
+	"Horror"
     ];
 
     var anatomy = [
 	"eye",
+	"skull",
+	"tongue",
 	"throat",
 	"tooth",
 	"fang",
@@ -213,7 +245,18 @@ var evil = (function() {
 	"beard",
 	"talon",
 	"fingers",
-	"bone"
+	"bone",
+	"sword",
+	"nail",
+	"brain",
+	"ribs",
+	"blood",
+	"spleen",
+	"grip",
+	"finger",
+	"feet",
+	"hands",
+	"hand"
     ];
     
     var attribute = [
@@ -222,6 +265,9 @@ var evil = (function() {
 	"Hell",
 	"Iron",
 	"Hate",
+	"Whisper",
+	"Ghost",
+	"Gore",
 	"Fiend",
 	"Evil",
 	"Black",
@@ -229,7 +275,20 @@ var evil = (function() {
 	"Death",
 	"Glimmer",
 	"Fear",
-	"Grey"
+	"Grey",
+	"Rot",
+	"Scar",
+	"Bloat",
+	"Derp",
+	"Tinkle",
+	"Maim",
+	"Rust",
+	"Dark",
+	"Shadow",
+	"Soul",
+	"Lithe",
+	"Stone",
+	"Rock"
     ];
 
     var adjective = [
@@ -240,7 +299,6 @@ var evil = (function() {
 	"Unspeakable",
 	"Red",
 	"Dead",
-	"Government-Sanctioned",
 	"Mutant",
 	"Alien",
 	"Green",
@@ -288,13 +346,17 @@ var evil = (function() {
 	"Iron-Fisted",
 	"Naughty",
 	"Unconquered",
-	"British",
-	"French",
-	"Hungarian",
+	"Romanian",
 	"Boring",
 	"[CENSORED]",
 	"Soulless",
-	"Nameless"
+	"Terrible",
+	"Dreadful",
+	"Nightmarish",
+	"Burning",
+	"Blazing",
+	"Untouched",
+	"Unimaginable"
     ];
 
     var killer = [
@@ -312,7 +374,12 @@ var evil = (function() {
 	"Demolisher",
 	"Anathema",
 	"Blasphemer",
-	"Defiler"
+	"Defiler",
+	"Corruptor",
+	"End",
+	"Ghost",
+	"Antithesis",
+	"Enemy"
     ];
 
     var good = [
@@ -333,35 +400,167 @@ var evil = (function() {
 	"Life",
 	"Faith",
 	"Candy",
-	"Happiness"
+	"Happiness",
+	"Stars",
+	"Galaxies",
+	"Planets",
+	"Species",
+	"Gods",
+	"Spirits",
+	"Light",
+	"Suns",
+	"Seasons",
+	"Time",
+	"Speech",
+	"Thought",
+	"Freedom"
     ];
 
     var syl1 = [
 	"Tor", "Orc", "Naak", "Sod", "Fin", "Leth", "Praz", "Vec", "Nil", "Oth", "Med", "Pic", "Lork", "Vaz", 
-	"Nom", "Tod", "Tas", "Shas", "Ol", "Op", "Or", "Av", "Ar", "Us", "Sul", "Xer", "Pok", "Gor"
+	"Nom", "Tod", "Tas", "Shas", "Ol", "Op", "Or", "Av", "Ar", "Sul", "Xer", "Pok", "Gor", "Hodr", "Feld",
+	"Mun", "Mung", "Rot", "Dhal", "Mer"
     ];
     
     var syl2 = [
-	"", "oth", "ol", "ul", "udr", "onor", "edra", "a", "aa", "a'a", "mol", "mo", "o", "i", "i-i", "oo"
+	"", "oth", "ol", "ul", "udr", "onor", "edra", "a", "aa", "a'a", "mol", "mo", "o", "i", "i'i", "ket", "ir",
+	"ari", "oz", "toroth", "naki", "idora", "osal", "dros", "'athi", "'onnor", "-Zol", "-Nad", "-Vec", "os",
+	"ippe", "ippus", "trus", "innus", "rog", "oggoth", "thoth", "tag", "dor", "ki", "emon", "dhal"
+    ];
+                       
+    var name1 = [
+	"Kills",
+	"Dreams-of",
+	"Eats",
+	"Dances-with",
+	"Drinks",
+	"Cooks",
+	"Befouls",
+	"Betrays",
+	"Stabs",
+	"Murders",
+	"Bears",
+	"Seduces",
+	"Tempts",
+	"Complains-about",
+	"Causes",
+	"Finds",
+	"Summons",
+	"Destroys",
+	"Touches",
+	"Vomits",
+	"Mauls",
+	"Maims",
+	"Burns",
+	"Drowns",
+	"Enslaves",
+	"Commands",
+	"Stinks-of",
+	"Smells-like",
+	"Sounds-like",
+	"Born-of",
+	"Child-of",
+	"Doom-of",
+	"Whispers-to",
+	"Whispers-of",
+	"Names",
+	"Wields"
+    ];
+
+    var name2 = [
+	"a-star",
+	"a-bear",
+	"demons",
+	"a-succubus",
+	"wolves",
+	"a-paladin",
+	"the-world",
+	"the-nine-hells",
+	"a-king",
+	"a-queen",
+	"an-army",
+	"the-innocent",
+	"nightmares",
+	"the-galaxy",
+	"black-holes",
+	"neutrons",
+	"protons",
+	"a-continent",
+	"children",
+	"all-men",
+	"all-women",
+	"all-life",
+	"a-dream",
+	"a-fart",
+	"a-riddle",
+	"a-desire",
+	"a-memory",
+	"freedom",
+	"a-shadow",
+	"shadows",
+	"a-parasite",
+	"a-worm",
+	"worms",
+	"a-dragon",
+	"a-wyvern",
+	"a-werebear",
+	"names",
+	"words",
+	"all-tongues",
+	"silence"
+    ];
+
+    var elemental = [
+	"Elemental",
+	"Golem",
+	"Avatar"
+    ];
+
+    var matter = [
+	"Bone",
+	"Blood",
+	"Flesh",
+	"Clay",
+	"Fire",
+	"Water",
+	"Wind",
+	"Earth",
+	"Stone",
+	"Shadow",
+	"Pain",
+	"Tear",
+	"Mud",
+	"Lava",
+	"Steam",
+	"Dust",
+	"Ash",
+	"Despair"
+    ];
+
+    var name = [
+	[ attribute, '', anatomy ],
+	[ syl1, '', syl2 ],
+	[ name1, '-', name2 ]
     ];
 
     var root = [
 	[ address, ' ', ominous ],
 	[ "The ", ruler, " of ", ominous ],
+	[ "The ", rulers, " of ", ominous ],
 	[ "The ", killer, " of ", good ],
 	[ "The ", adjective, " ", person ],
 	[ "The ", adjective, " ", killer, ' of ', good ],
-	[ syl1, syl2, ' the ', adjective], 
-	[ syl1, syl2, ', ', killer, ' of ', good ],
-	[ attribute, anatomy ],
-	[ attribute, anatomy, ' the ', adjective ],
-	[ attribute, anatomy, ', ', killer, ' of ', good ]	
+	[ name, ' the ', adjective ],
+	[ name, ', the ', adjective, ' ', person ],
+	[ name, ', ', matter, ' ', elemental ],
+	[ name, ', ', killer, ' of ', good], 
+	[ name, ', ', ruler, " of ", ominous ]	
     ];
     
     return {
 	count: count(root),
 	get:   function (n) {
-	    return nth(root,Math.floor(n) * 19937);
+	    return nth(root,Math.floor(n) * 2147483647);
 	}
     };
 
