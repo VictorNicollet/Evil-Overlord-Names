@@ -8,8 +8,6 @@ You will be able to generate names such as:
     Lethedra, Devourer of Life
     The Deceitful Magician
 
-See a running example online <a href="http://www.nicollet.net/files/blog/evil-overlord/">here</a>.
-
 ## Usage
 
 Include `evil.js`, then: 
